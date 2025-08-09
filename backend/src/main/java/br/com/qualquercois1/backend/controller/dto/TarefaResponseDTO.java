@@ -6,12 +6,12 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class TarefaDTO {
+public class TarefaResponseDTO {
     private Long id;
     private String titulo;
     private String descricao;
     private LocalDateTime data_criacao;
     private LocalDateTime data_conclusao;
     private StatusTarefa status;
-    private UsuarioDTO usuario;
+    private UsuarioResponseDTO usuario;
 }

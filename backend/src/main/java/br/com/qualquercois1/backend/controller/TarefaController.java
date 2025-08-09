@@ -1,6 +1,6 @@
 package br.com.qualquercois1.backend.controller;
 
-import br.com.qualquercois1.backend.controller.dto.TarefaDTO;
+import br.com.qualquercois1.backend.controller.dto.TarefaResponseDTO;
 import br.com.qualquercois1.backend.service.TarefaService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,7 @@ public class TarefaController {
     }
 
     @GetMapping
-    public List<TarefaDTO> getTarefas(){
+    public List<TarefaResponseDTO> getTarefas(){
         return tarefaService.getTarefas();
     }
 }

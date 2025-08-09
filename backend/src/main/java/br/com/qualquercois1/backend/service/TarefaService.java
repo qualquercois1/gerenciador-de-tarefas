@@ -1,7 +1,7 @@
 package br.com.qualquercois1.backend.service;
 
-import br.com.qualquercois1.backend.controller.dto.TarefaDTO;
-import br.com.qualquercois1.backend.controller.dto.UsuarioDTO;
+import br.com.qualquercois1.backend.controller.dto.TarefaResponseDTO;
+import br.com.qualquercois1.backend.controller.dto.UsuarioResponseDTO;
 import br.com.qualquercois1.backend.model.Tarefa;
 import br.com.qualquercois1.backend.model.Usuario;
 import br.com.qualquercois1.backend.repository.TarefaRepository;
@@ -19,28 +19,28 @@ public class TarefaService {
         this.tarefaRepository = tarefaRepository;
     }
 
-    public List<TarefaDTO> getTarefas(){
+    public List<TarefaResponseDTO> getTarefas(){
         List<Tarefa> tarefas = tarefaRepository.findAll();
 
         return tarefas.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
-    private TarefaDTO convertToDTO(Tarefa tarefa){
+    private TarefaResponseDTO convertToDTO(Tarefa tarefa){
         Usuario usuario = tarefa.getUsuario();
-        UsuarioDTO usuarioDTO = new UsuarioDTO();
-        usuarioDTO.setId(usuario.getId());
-        usuarioDTO.setNome(usuario.getNome());
-        usuarioDTO.setEmail(usuario.getEmail());
-        usuarioDTO.setSenha(usuario.getSenha());
+        UsuarioResponseDTO usuarioResponseDTO = new UsuarioResponseDTO();
+        usuarioResponseDTO.setId(usuario.getId());
+        usuarioResponseDTO.setNome(usuario.getNome());
+        usuarioResponseDTO.setEmail(usuario.getEmail());
+        usuarioResponseDTO.setSenha(usuario.getSenha());
 
-        TarefaDTO dto = new TarefaDTO();
+        TarefaResponseDTO dto = new TarefaResponseDTO();
         dto.setId(tarefa.getId());
         dto.setTitulo(tarefa.getTitulo());
         dto.setDescricao(tarefa.getDescricao());
         dto.setData_criacao(tarefa.getData_criacao());
         dto.setData_conclusao(tarefa.getData_conclusao());
         dto.setStatus(tarefa.getStatus());
-        dto.setUsuario(usuarioDTO);
+        dto.setUsuario(usuarioResponseDTO);
         return dto;
     }
 }
