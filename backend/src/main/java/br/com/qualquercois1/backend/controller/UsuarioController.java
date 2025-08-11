@@ -6,6 +6,7 @@ import br.com.qualquercois1.backend.controller.dto.UsuarioCreateDTO;
 import br.com.qualquercois1.backend.controller.dto.UsuarioResponseDTO;
 import br.com.qualquercois1.backend.model.Usuario;
 import br.com.qualquercois1.backend.service.UsuarioService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,5 +27,19 @@ public class UsuarioController {
     @PostMapping
     public UsuarioResponseDTO saveUsuario(@RequestBody UsuarioCreateDTO usuarioCreateDTO) {
         return usuarioService.saveUsuario(usuarioCreateDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUsuario(@PathVariable Long id) {
+        if (usuarioService.deleteUsuario(id)) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/{id}")
+    public UsuarioResponseDTO updateUsuario(@PathVariable Long id, @RequestBody UsuarioCreateDTO usuarioCreateDTO) {
+        UsuarioResponseDTO usuarioResponseDTO = usuarioService.updateUsuario(usuarioCreateDTO);
+
     }
 }

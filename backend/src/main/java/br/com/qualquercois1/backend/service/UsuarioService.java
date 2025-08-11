@@ -27,6 +27,20 @@ public class UsuarioService {
         return toResponseDTO(usuarioRetorno);
     }
 
+    public boolean deleteUsuario(Long id) {
+        if(usuarioRepository.existsById(id)){
+            usuarioRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+    public UsuarioResponseDTO updateUsuario(UsuarioCreateDTO usuarioCreateDTO) {
+        Usuario usuario = toEntity(usuarioCreateDTO);
+        Usuario usuarioRetorno = usuarioRepository.save(usuario);
+        return toResponseDTO(usuarioRetorno);
+    }
+
     private Usuario toEntity(UsuarioCreateDTO usuarioCreateDTO) {
         Usuario usuario = new Usuario();
         usuario.setNome(usuarioCreateDTO.getNome());
