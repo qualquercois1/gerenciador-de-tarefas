@@ -2,6 +2,7 @@ package br.com.qualquercois1.backend.service;
 
 import br.com.qualquercois1.backend.controller.dto.UsuarioCreateDTO;
 import br.com.qualquercois1.backend.controller.dto.UsuarioResponseDTO;
+import br.com.qualquercois1.backend.controller.dto.UsuarioUpdateDTO;
 import br.com.qualquercois1.backend.model.Usuario;
 import br.com.qualquercois1.backend.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
@@ -35,9 +36,19 @@ public class UsuarioService {
         return false;
     }
 
-    public UsuarioResponseDTO updateUsuario(UsuarioCreateDTO usuarioCreateDTO) {
-        Usuario usuario = toEntity(usuarioCreateDTO);
-        Usuario usuarioRetorno = usuarioRepository.save(usuario);
+    public UsuarioResponseDTO updateUsuario(UsuarioUpdateDTO usuarioUpdateDTO) {
+        Usuario usuarioExistente = usuarioRepository.findById(usuarioUpdateDTO.getId()).orElseThrow(() -> new RuntimeException("Usuário não encontrado para update."));
+    
+        if (usuarioUpdateDTO.getNome() != null) {
+            usuarioExistente.setNome(usuarioUpdateDTO.getNome());
+        }
+        if (usuarioUpdateDTO.getEmail() != null) {
+            usuarioExistente.setEmail(usuarioUpdateDTO.getEmail());
+        }
+        if (usuarioUpdateDTO.getSenha() != null) {
+            usuarioExistente.setSenha(usuarioUpdateDTO.getSenha());
+        }
+        Usuario usuarioRetorno = usuarioRepository.save(usuarioExistente);
         return toResponseDTO(usuarioRetorno);
     }
 

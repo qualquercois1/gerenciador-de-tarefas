@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.qualquercois1.backend.controller.dto.UsuarioCreateDTO;
 import br.com.qualquercois1.backend.controller.dto.UsuarioResponseDTO;
+import br.com.qualquercois1.backend.controller.dto.UsuarioUpdateDTO;
 import br.com.qualquercois1.backend.model.Usuario;
 import br.com.qualquercois1.backend.service.UsuarioService;
 import org.springframework.http.ResponseEntity;
@@ -37,9 +38,10 @@ public class UsuarioController {
         return ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/{id}")
-    public UsuarioResponseDTO updateUsuario(@PathVariable Long id, @RequestBody UsuarioCreateDTO usuarioCreateDTO) {
-        UsuarioResponseDTO usuarioResponseDTO = usuarioService.updateUsuario(usuarioCreateDTO);
-
+    @PatchMapping
+    public UsuarioResponseDTO updateUsuario(@RequestBody UsuarioUpdateDTO usuarioUpdateDTO) {
+        return usuarioService.updateUsuario(usuarioUpdateDTO);
     }
+
+    
 }

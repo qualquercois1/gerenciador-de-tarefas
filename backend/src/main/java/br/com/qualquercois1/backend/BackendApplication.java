@@ -1,4 +1,4 @@
-package br.com.qualquercois1.backend; // Ou o seu pacote correto
+package br.com.qualquercois1.backend;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +13,6 @@ public class BackendApplication {
         SpringApplication.run(BackendApplication.class, args);
     }
 
-    // <<< COLE O CÓDIGO AQUI DENTRO >>>
     @Bean
     public CommandLineRunner commandLineRunner(Environment environment) {
         return args -> {

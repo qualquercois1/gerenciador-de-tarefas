@@ -4,7 +4,6 @@ import br.com.qualquercois1.backend.model.enums.StatusTarefa;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 public class Tarefa {
