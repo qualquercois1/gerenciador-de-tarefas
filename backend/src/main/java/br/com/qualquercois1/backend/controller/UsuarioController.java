@@ -5,6 +5,7 @@ import java.util.List;
 import br.com.qualquercois1.backend.controller.dto.UsuarioCreateDTO;
 import br.com.qualquercois1.backend.controller.dto.UsuarioResponseDTO;
 import br.com.qualquercois1.backend.controller.dto.UsuarioUpdateDTO;
+import br.com.qualquercois1.backend.model.Tarefa;
 import br.com.qualquercois1.backend.model.Usuario;
 import br.com.qualquercois1.backend.service.UsuarioService;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,11 @@ public class UsuarioController {
     @GetMapping
     public List<Usuario> getUsuarios() {
         return usuarioService.getUsuarios();
+    }
+
+    @GetMapping("/{id}")
+    public List<Tarefa> getTarefasDoUsuario(@PathVariable Long id) {
+        return usuarioService.getTarefasDoUsuario(id);
     }
 
     @PostMapping

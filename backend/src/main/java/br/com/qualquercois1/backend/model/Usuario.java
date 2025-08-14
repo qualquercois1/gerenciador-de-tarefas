@@ -70,4 +70,10 @@ public class Usuario {
         this.tarefas.remove(tarefa);
         tarefa.setUsuario(null);
     }
+
+    public List<Tarefa> getTarefas() {
+        return tarefas;
+    }
+
+    
 }

@@ -3,6 +3,7 @@ package br.com.qualquercois1.backend.service;
 import br.com.qualquercois1.backend.controller.dto.UsuarioCreateDTO;
 import br.com.qualquercois1.backend.controller.dto.UsuarioResponseDTO;
 import br.com.qualquercois1.backend.controller.dto.UsuarioUpdateDTO;
+import br.com.qualquercois1.backend.model.Tarefa;
 import br.com.qualquercois1.backend.model.Usuario;
 import br.com.qualquercois1.backend.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,11 @@ public class UsuarioService {
 
     public List<Usuario> getUsuarios() {
         return usuarioRepository.findAll();
+    }
+
+    public List<Tarefa> getTarefasDoUsuario(Long usuario_id) {
+        Usuario usuario = usuarioRepository.findById(usuario_id).orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+        return usuario.getTarefas();
     }
 
     public UsuarioResponseDTO saveUsuario(UsuarioCreateDTO usuarioCreateDTO) {

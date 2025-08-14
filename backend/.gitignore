@@ -35,4 +35,6 @@ build/
 ### Bancos ###
 *.db
 *.db.trace
+*.mv.db
+*.trace.db
 
