@@ -3,6 +3,8 @@ package br.com.qualquercois1.backend.controller;
 import br.com.qualquercois1.backend.controller.dto.TarefaBuscarTituloDTO;
 import br.com.qualquercois1.backend.controller.dto.TarefaCreateDTO;
 import br.com.qualquercois1.backend.controller.dto.TarefaResponseDTO;
+import br.com.qualquercois1.backend.controller.dto.TarefaUsuarioDTO;
+import br.com.qualquercois1.backend.model.Tarefa;
 import br.com.qualquercois1.backend.service.TarefaService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,5 +42,10 @@ public class TarefaController {
     @PostMapping
     public TarefaResponseDTO saveTarefa(@RequestBody TarefaCreateDTO tarefaCreateDTO) {
         return tarefaService.saveTarefa(tarefaCreateDTO);
+    }
+
+    @GetMapping("/{id}")
+    public List<TarefaUsuarioDTO> getTarefasDoUsuario(@PathVariable Long id) {
+        return tarefaService.getTarefasDoUsuario(id);
     }
 }

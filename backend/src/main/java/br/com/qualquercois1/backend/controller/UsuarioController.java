@@ -22,13 +22,8 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<Usuario> getUsuarios() {
+    public List<UsuarioResponseDTO> getUsuarios() {
         return usuarioService.getUsuarios();
-    }
-
-    @GetMapping("/{id}")
-    public List<Tarefa> getTarefasDoUsuario(@PathVariable Long id) {
-        return usuarioService.getTarefasDoUsuario(id);
     }
 
     @PostMapping

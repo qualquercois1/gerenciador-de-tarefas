@@ -1,9 +1,6 @@
 package br.com.qualquercois1.backend.service;
 
-import br.com.qualquercois1.backend.controller.dto.TarefaBuscarTituloDTO;
-import br.com.qualquercois1.backend.controller.dto.TarefaCreateDTO;
-import br.com.qualquercois1.backend.controller.dto.TarefaResponseDTO;
-import br.com.qualquercois1.backend.controller.dto.UsuarioResponseDTO;
+import br.com.qualquercois1.backend.controller.dto.*;
 import br.com.qualquercois1.backend.model.Tarefa;
 import br.com.qualquercois1.backend.model.Usuario;
 import br.com.qualquercois1.backend.model.enums.StatusTarefa;
@@ -54,6 +51,17 @@ public class TarefaService {
         return convertToDTO(tarefa);
     }
 
+    public List<TarefaUsuarioDTO> getTarefasDoUsuario(Long usuario_id) {
+        Usuario usuario = usuarioRepository.findById(usuario_id).orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+        List<Tarefa> tarefas = usuario.getTarefas();
+        List<TarefaUsuarioDTO> tarefaUsuarioDTOS = new ArrayList<>();
+        for(Tarefa tarefa : tarefas){
+            tarefaUsuarioDTOS.add(convertToUsuarioDTO(tarefa));
+        }
+        return tarefaUsuarioDTOS;
+    }
+
+
     private Tarefa convertToEntity(TarefaCreateDTO tarefaCreateDTO) {
         Usuario usuario = usuarioRepository.findById(tarefaCreateDTO.getUsuario_id()).orElseThrow(() -> new RuntimeException("Usuario não encontrado."));
         Tarefa tarefa = new Tarefa();
@@ -81,6 +89,24 @@ public class TarefaService {
         dto.setData_conclusao(tarefa.getData_conclusao());
         dto.setStatus(tarefa.getStatus());
         dto.setUsuario(usuarioResponseDTO);
+        return dto;
+    }
+
+    private TarefaUsuarioDTO convertToUsuarioDTO(Tarefa tarefa){
+        Usuario usuario = tarefa.getUsuario();
+        UsuarioResponseDTO usuarioResponseDTO = new UsuarioResponseDTO();
+        usuarioResponseDTO.setId(usuario.getId());
+        usuarioResponseDTO.setNome(usuario.getNome());
+        usuarioResponseDTO.setEmail(usuario.getEmail());
+        usuarioResponseDTO.setSenha(usuario.getSenha());
+
+        TarefaUsuarioDTO dto = new TarefaUsuarioDTO();
+        dto.setId(tarefa.getId());
+        dto.setTitulo(tarefa.getTitulo());
+        dto.setDescricao(tarefa.getDescricao());
+        dto.setData_criacao(tarefa.getData_criacao());
+        dto.setData_conclusao(tarefa.getData_conclusao());
+        dto.setStatus(tarefa.getStatus());
         return dto;
     }
 }
