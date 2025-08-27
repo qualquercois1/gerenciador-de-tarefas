@@ -1,0 +1,107 @@
+/* No seu arquivo de estilos do layout: main-layout.component.scss */
+
+/* :host é um seletor especial do Angular que representa o próprio componente.
+   Aplicar flex aqui garante que a sidebar e o main fiquem lado a lado. */
+:host {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* Ocupa a tela inteira */
+}
+
+.sidebar {
+  width: 260px; 
+  background-color: #1A202C; 
+  color: #FFFFFF; 
+  padding: 24px;
+  box-sizing: border-box; 
+  display: flex;
+  flex-direction: column; 
+}
+
+/* --- ESTILOS DO HEADER --- */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sidebar-header a {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #f7fafc;
+}
+
+/* --- ESTILOS DA NAVEGAÇÃO --- */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Empurra o footer para baixo */
+  margin-top: 40px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #a0aec0; 
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s; 
+}
+
+.sidebar-nav a:hover {
+    background-color: #2d3748; 
+    color: #FFFFFF;
+}
+
+/* O [routerLinkActive] do Angular vai adicionar essa classe automaticamente */
+.sidebar-nav a.active {
+    background-color: #FF7A00; 
+    color: #FFFFFF;
+}
+
+/* --- ESTILOS DO FOOTER --- */
+.sidebar-footer {
+  border-top: 1px solid #2d3748; 
+  padding-top: 24px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.user-role {
+    font-size: 14px;
+    color: #a0aec0;
+}
+
+
+/* --- ESTILO DO CONTEÚDO PRINCIPAL --- */
+.main-content {
+  flex-grow: 1; /* Ocupa o resto do espaço */
+  padding: 32px;
+  overflow-y: auto; /* Adiciona barra de rolagem se o conteúdo for grande */
+}
