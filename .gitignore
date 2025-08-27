@@ -1,0 +1,79 @@
+# Arquivo .gitignore combinado para projetos Angular e Java/Maven.
+
+### Build, Compilação e Pacotes ###
+# Angular
+/dist/
+/tmp/
+/out-tsc/
+/bazel-out/
+/.angular/cache/
+
+# Java / Maven / Gradle
+/target/
+/build/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
+
+### Dependências ###
+/node_modules/
+/typings/
+
+### Logs ###
+npm-debug.log
+yarn-error.log
+/libpeerconnection.log
+testem.log
+
+### IDEs e Editores de Código ###
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# STS / Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# Outros Editores
+.c9/
+*.launch
+*.sublime-workspace
+
+### Bancos de Dados Locais ###
+*.db
+*.db.trace
+*.mv.db
+*.trace.db
+
+### Arquivos de Sistema Operacional ###
+.DS_Store
+Thumbs.db
+
+### Diversos ###
+HELP.md
+.sass-cache/
+/connect.lock
+/coverage/
