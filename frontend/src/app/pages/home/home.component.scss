@@ -1,0 +1,60 @@
+/* src/app/pages/home/home.component.scss */
+
+/* :host é um seletor do Angular que garante que os estilos se apliquem ao componente como um todo */
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Ocupa toda a altura da área de conteúdo */
+  text-align: center;
+}
+
+.welcome-container {
+  max-width: 600px; /* Define uma largura máxima para o conteúdo não ficar muito esticado em telas grandes */
+}
+
+.welcome-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.welcome-title {
+  font-size: 36px; /* Do nosso Design System */
+  font-weight: bold;
+  color: #1A202C; /* Cor Grafite */
+  margin-bottom: 8px;
+}
+
+.brand-name {
+  color: #FF7A00; /* Cor Laranja Vibrante */
+}
+
+.welcome-subtitle {
+  font-size: 18px;
+  color: #4A5568; /* Um cinza um pouco mais escuro para o subtítulo */
+  margin-bottom: 24px;
+}
+
+.welcome-text {
+  font-size: 16px;
+  color: #718096; /* Um cinza mais suave para o texto de apoio */
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.welcome-button {
+  background-color: #FF7A00; /* Cor Laranja Vibrante */
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.welcome-button:hover {
+  transform: translateY(-2px); /* Efeito de "levantar" ao passar o mouse */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

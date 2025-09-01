@@ -1,0 +1,158 @@
+/* src/app/pages/tarefas/tarefas.component.scss */
+
+:host {
+  display: block;
+  padding: 32px;
+}
+
+// ---- CABEÇALHO DA PÁGINA ----
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+
+  h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1A202C;
+  }
+}
+
+.add-task-button {
+  background-color: #FF7A00;
+  color: #FFFFFF;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// ---- PAINEL DE TAREFAS (KANBAN) ----
+.task-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.task-column {
+  background-color: #EDF2F7;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.column-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4A5568;
+  margin: 0 0 24px 0;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #CBD5E0;
+}
+
+// ---- CARDS DE TAREFA ----
+.task-card {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  
+  // Estilos adicionados para o rodapé
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 150px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #1A202C;
+  }
+}
+
+.priority {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 12px;
+  color: #FFFFFF;
+  
+  &.high { background-color: #C53030; }
+  &.medium { background-color: #DD6B20; }
+  &.low { background-color: #38A169; }
+}
+
+.due-date {
+  font-size: 14px;
+  color: #718096;
+  margin: 8px 0;
+}
+
+// ---- ESTILOS PARA O RODAPÉ E AÇÕES DO CARD (JÁ INCLUÍDOS ANTES) ----
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.card-details-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #718096; // Cor cinza sutil
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #0052CC; // Nosso Azul Intenso no hover
+  }
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #a0aec0;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background-color: #EDF2F7;
+  }
+
+  &.edit:hover {
+    color: #0052CC; // Azul
+  }
+
+  &.delete:hover {
+    color: #C53030; // Vermelho
+  }
+}

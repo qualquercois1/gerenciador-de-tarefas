@@ -16,11 +16,9 @@ public class BackendApplication {
     @Bean
     public CommandLineRunner commandLineRunner(Environment environment) {
         return args -> {
-            // Pega a porta do servidor do ambiente Spring
             String serverPort = environment.getProperty("local.server.port");
 
-            // Imprime a mensagem simples e direta no console
-            System.out.println("\n"); // Linha em branco para separar
+            System.out.println("\n");
             System.out.println(">> APLICAÇÃO PRONTA! ACESSE EM: http://localhost:" + serverPort);
             System.out.println("\n");
         };

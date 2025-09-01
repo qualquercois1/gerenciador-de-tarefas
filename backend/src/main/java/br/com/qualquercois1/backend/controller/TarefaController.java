@@ -6,6 +6,8 @@ import br.com.qualquercois1.backend.controller.dto.TarefaResponseDTO;
 import br.com.qualquercois1.backend.controller.dto.TarefaUsuarioDTO;
 import br.com.qualquercois1.backend.model.Tarefa;
 import br.com.qualquercois1.backend.service.TarefaService;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tarefa")
+@CrossOrigin(origins = "http://localhost:4200")
 public class TarefaController {
 
     private final TarefaService tarefaService;
